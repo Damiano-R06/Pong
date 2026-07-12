@@ -4,11 +4,11 @@ pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
+movSpeed = 5
 dt = 0
 
-paddle = pygame.Rect(100, 200, 10, 75)
-
-player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
+player_pos = 200
+paddle = pygame.Rect(75, player_pos, 10, 75)
 
 while running:
     # poll for events
@@ -23,10 +23,14 @@ while running:
     pygame.draw.rect(screen, "white", paddle, width=0)
 
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_w]:
-        paddle.move_ip(0, -5)
-    if keys[pygame.K_s]:
-        paddle.move_ip(0, 5)
+    if keys[pygame.K_w] and player_pos > 0:
+        paddle.move_ip(0,-movSpeed)
+        player_pos -= movSpeed
+        print(player_pos)
+    if keys[pygame.K_s] and player_pos < 650:
+        paddle.move_ip(0,movSpeed)
+        player_pos += movSpeed
+        print(player_pos)
 
     # flip() the display to put your work on screen
     pygame.display.flip()
@@ -35,5 +39,8 @@ while running:
     # dt is delta time in seconds since last frame, used for framerate-
     # independent physics.
     dt = clock.tick(60) / 1000
+
+    if keys[pygame.K_q]:
+        running = False
 
 pygame.quit()
