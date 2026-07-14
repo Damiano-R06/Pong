@@ -54,11 +54,12 @@ while running:
             movSpeedBallx -= colisionSpeed *signX
             movSpeedBally -= colisionSpeed *signY
         if keys[pygame.K_s] and not movingUp:
-            movSpeedBallx -= colisionSpeed *signX
-            movSpeedBally -= colisionSpeed *signY
-        if keys[pygame.K_s] and movingUp:
             movSpeedBallx += colisionSpeed *signX
             movSpeedBally += colisionSpeed *signY
+        if keys[pygame.K_s] and movingUp:
+            movSpeedBallx -= colisionSpeed *signX
+            movSpeedBally -= colisionSpeed *signY
+        
             
     if enemy.collidepoint(ball_pos.x - radius + 10, ball_pos.y - radius):
         movingUp = movSpeedBally < 0
@@ -74,11 +75,11 @@ while running:
             movSpeedBallx -= colisionSpeed *signX
             movSpeedBally -= colisionSpeed  *signY
         if keys[pygame.K_DOWN] and not movingUp:
-            movSpeedBallx -= colisionSpeed *signX
-            movSpeedBally -= colisionSpeed *signY
-        if keys[pygame.K_DOWN] and movingUp:
             movSpeedBallx += colisionSpeed *signX
             movSpeedBally += colisionSpeed *signY
+        if keys[pygame.K_DOWN] and movingUp:
+            movSpeedBallx -= colisionSpeed *signX
+            movSpeedBally -= colisionSpeed *signY
 
     if ball_pos.y - radius <= 0 or ball_pos.y + radius >= screen.get_height():
          movSpeedBally *= -1
