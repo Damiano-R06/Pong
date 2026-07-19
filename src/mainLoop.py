@@ -1,6 +1,7 @@
 import pygame
 
 from running import Pong
+from start import Start
 
 from enum import Enum
 
@@ -15,6 +16,7 @@ run = True
 curState = State.RUNNING
 
 game = Pong(screen)
+startScreen = Start(screen)
 
 while run:
     for event in pygame.event.get():
@@ -23,5 +25,8 @@ while run:
 
     if curState == State.RUNNING:
         run = game.mainLoop()
+    
+    if curState == State.START:
+
 
 pygame.quit()
