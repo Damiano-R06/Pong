@@ -13,7 +13,7 @@ class State(Enum):
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 run = True
-curState = State.RUNNING
+curState = State.START
 
 game = Pong(screen)
 startScreen = Start(screen)
@@ -27,6 +27,6 @@ while run:
         run = game.mainLoop()
     
     if curState == State.START:
-
-
+        startScreen.startUI()
+        
 pygame.quit()
