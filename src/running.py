@@ -1,4 +1,5 @@
 import pygame
+import pygame.freetype
 import random
 
 class Pong:

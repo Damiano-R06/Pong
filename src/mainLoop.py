@@ -19,7 +19,9 @@ game = Pong(screen)
 startScreen = Start(screen)
 
 while run:
-    for event in pygame.event.get():
+    events = pygame.event.get()
+
+    for event in events:
         if event.type == pygame.QUIT:
             run = False
 
@@ -27,6 +29,6 @@ while run:
         run = game.mainLoop()
     
     if curState == State.START:
-        startScreen.startUI()
+        startScreen.startUI(events)
         
 pygame.quit()

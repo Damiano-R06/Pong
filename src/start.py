@@ -1,14 +1,23 @@
 import pygame
 
+import pygame.freetype
+
 class Start:
     def __init__(self, screen):
         self.screen = screen
-        self.startButton = pygame.Rect(screen.get_width()/2 - 250, screen.get_height()/2 - 150, 500,100)
+        self.startButton = pygame.Rect(screen.get_width()//2 - 200, screen.get_height()//2 - 150, 400,100)
+        self.font = pygame.freetype.Font(None, size=50)
     
-    def startUI(self):
+    def startUI(self,events):
+        for event in events:
+            if event.type == pygame.MOUSEBUTTONUP:
+                if self.startButton.collidepoint(event.pos):
+                    print("clicked")
+
         self.screen.fill("black")
 
         pygame.draw.rect(self.screen, "white", self.startButton, width=0)
+        self.font.render_to(self.screen, (self.screen.get_width()//2 - 65, self.screen.get_height()//2 - 120), "Start", fgcolor=(0, 0, 0))
 
         pygame.display.flip()
 
