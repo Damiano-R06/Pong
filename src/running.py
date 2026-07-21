@@ -36,6 +36,13 @@ class Pong:
         pygame.draw.rect(self.screen, "white", self.enemy, width=0)
         pygame.draw.circle(self.screen, "white", self.ball_pos, self.radius, width=0)
 
+        if self.score1 == 10:
+            curState = State.P1WIN
+            return curState
+        if self.score2 == 10:
+            curState = State.P2WIN
+            return curState
+
         keys = pygame.key.get_pressed()
         
         self.ball_pos.x += self.movSpeedBallx * self.dt
@@ -109,10 +116,7 @@ class Pong:
         # dt is delta time in seconds since last frame, used for framerate-
         # independent physics.
         self.dt = self.clock.tick(60) / 1000
-
-        if keys[pygame.K_q]:
-            curState = State.END
-            return curState
+        
         
         if self.ball_pos.x - self.radius < 0:
             self.score2 += 1
