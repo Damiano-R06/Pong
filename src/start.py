@@ -1,6 +1,7 @@
 import pygame
 
 import pygame.freetype
+from states import State
 
 class Start:
     def __init__(self, screen):
@@ -9,10 +10,12 @@ class Start:
         self.font = pygame.freetype.Font(None, size=50)
     
     def startUI(self,events):
+        curState = State.START
         for event in events:
             if event.type == pygame.MOUSEBUTTONUP:
                 if self.startButton.collidepoint(event.pos):
-                    print("clicked")
+                    curState = State.RUNNING
+                    return curState
 
         self.screen.fill("black")
 
@@ -20,5 +23,7 @@ class Start:
         self.font.render_to(self.screen, (self.screen.get_width()//2 - 65, self.screen.get_height()//2 - 120), "Start", fgcolor=(0, 0, 0))
 
         pygame.display.flip()
+
+        return curState
 
 

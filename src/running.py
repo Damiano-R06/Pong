@@ -1,6 +1,7 @@
 import pygame
 import pygame.freetype
 import random
+from states import State
 
 class Pong:
     def __init__(self, screen):
@@ -20,7 +21,8 @@ class Pong:
 
 
     def mainLoop(self):
-        
+
+        curState = State.RUNNING
         #fill the screen with a color to wipe away anything from last frame
         self.screen.fill("black")
 
@@ -106,5 +108,6 @@ class Pong:
         self.dt = self.clock.tick(60) / 1000
 
         if keys[pygame.K_q] or self.ball_pos.x - self.radius < 0 or self.ball_pos.x + self.radius > self.screen.get_width():
-            return False
-        return True
+            curState = State.END
+            return curState
+        return curState
