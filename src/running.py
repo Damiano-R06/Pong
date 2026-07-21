@@ -83,8 +83,7 @@ class Pong:
         if keys[pygame.K_w] and self.player_pos1 > 0:
             self.paddle.move_ip(0,-self.movSpeedPad)
             self.player_pos1 -= self.movSpeedPad
-            
-
+    
         if keys[pygame.K_s] and self.player_pos1 < 650:
             self.paddle.move_ip(0,self.movSpeedPad)
             self.player_pos1 += self.movSpeedPad
@@ -97,8 +96,6 @@ class Pong:
             self.enemy.move_ip(0,self.movSpeedPad)
             self.player_pos2 += self.movSpeedPad
 
-        
-
         # flip() the display to put your work on screen
         pygame.display.flip()
 
@@ -107,7 +104,8 @@ class Pong:
         # independent physics.
         self.dt = self.clock.tick(60) / 1000
 
-        if keys[pygame.K_q] or self.ball_pos.x - self.radius < 0 or self.ball_pos.x + self.radius > self.screen.get_width():
+        if keys[pygame.K_q]:
             curState = State.END
             return curState
+        
         return curState

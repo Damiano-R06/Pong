@@ -3,6 +3,7 @@ import pygame
 from running import Pong
 from start import Start
 from states import State
+from pause import Pause
 
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
@@ -10,6 +11,7 @@ curState = State.START
 
 game = Pong(screen)
 startScreen = Start(screen)
+pause = Pause(screen)
 
 startedRun = False
 
@@ -19,6 +21,12 @@ while curState != State.END:
     for event in events:
         if event.type == pygame.QUIT:
             curState = State.END
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+            if curState == State.RUNNING:
+                curState = State.PAUSE
+            elif curState == State.PAUSE:
+                curState = State.RUNNING
+                game.clock = pygame.time.Clock()
 
     if curState == State.RUNNING:
         if not startedRun:
@@ -28,7 +36,13 @@ while curState != State.END:
         curState = game.mainLoop()
     
     if curState == State.START:
+        if startedRun:
+            startedRun = False
         curState = startScreen.startUI(events)
+    
+    if curState == State.PAUSE:
+       pause.paused()
+    
     
         
 pygame.quit()
