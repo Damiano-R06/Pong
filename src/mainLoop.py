@@ -36,8 +36,6 @@ while curState != State.END:
         curState = game.mainLoop()
     
     if curState == State.START:
-        if startedRun:
-            startedRun = False
         curState = startScreen.startUI(events)
     
     if curState == State.PAUSE:

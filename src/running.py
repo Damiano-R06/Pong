@@ -18,6 +18,9 @@ class Pong:
         self.ball_pos = pygame.Vector2(screen.get_width()/2, screen.get_height()/2)
         self.paddle = pygame.Rect(75, self.player_pos1, 10, 80)
         self.enemy = pygame.Rect(screen.get_width() - 85, self.player_pos2, 10, 80)
+        self.font = pygame.freetype.Font(None, size=25)
+        self.score1 = 0
+        self.score2 = 0
 
 
     def mainLoop(self):
@@ -25,6 +28,9 @@ class Pong:
         curState = State.RUNNING
         #fill the screen with a color to wipe away anything from last frame
         self.screen.fill("black")
+
+        self.font.render_to(self.screen, (10, 10), "Score P1: " + str(self.score1), fgcolor=(255, 255, 255))
+        self.font.render_to(self.screen, (1125, 10), "Score P2: " + str(self.score2), fgcolor=(255, 255, 255))
 
         pygame.draw.rect(self.screen, "white", self.paddle, width=0)
         pygame.draw.rect(self.screen, "white", self.enemy, width=0)
@@ -107,5 +113,13 @@ class Pong:
         if keys[pygame.K_q]:
             curState = State.END
             return curState
+        
+        if self.ball_pos.x - self.radius < 0:
+            self.score2 += 1
+            self.ball_pos = pygame.Vector2(self.screen.get_width()/2, self.screen.get_height()/2)
+        
+        if self.ball_pos.x + self.radius > self.screen.get_width():
+            self.score1 += 1
+            self.ball_pos = pygame.Vector2(self.screen.get_width()/2, self.screen.get_height()/2)
         
         return curState

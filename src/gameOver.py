@@ -1,0 +1,17 @@
+import pygame
+
+import pygame.freetype
+
+class GameOver:
+    def __init__(self,screen):
+        self.screen = screen
+        self.font = pygame.freetype.Font(None, size=50)
+    
+    def over(self):
+
+        self.screen.fill("black")
+
+        self.font.render_to(self.screen, (self.screen.get_width()//2 - 65, self.screen.get_height()//2 - 120), "GAME OVER :(", fgcolor=(255, 255, 255))
+
+        pygame.display.flip()
+
