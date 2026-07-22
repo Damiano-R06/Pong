@@ -7,6 +7,7 @@ from pause import Pause
 from gameOver import GameOver
 
 pygame.init()
+
 screen = pygame.display.set_mode((1280, 720))
 curState = State.START
 
@@ -16,6 +17,7 @@ pause = Pause(screen)
 gameOver = GameOver(screen)
 
 startedRun = False
+winner = 0
 
 while curState != State.END:
     events = pygame.event.get()
@@ -31,7 +33,11 @@ while curState != State.END:
             elif curState == State.PAUSE:
                 curState = State.RUNNING
                 game.clock = pygame.time.Clock()
-        
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_r and winner != 0:
+            game = Pong(screen)
+            winner = 0
+            startedRun = False
+            curState = State.START
 
     if curState == State.RUNNING:
         if not startedRun:
