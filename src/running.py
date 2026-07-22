@@ -97,7 +97,7 @@ class Pong:
             self.paddle.move_ip(0,-self.movSpeedPad)
             self.player_pos1 -= self.movSpeedPad
     
-        if keys[pygame.K_s] and self.player_pos1 < 650:
+        if keys[pygame.K_s] and self.player_pos1 < 635:
             self.paddle.move_ip(0,self.movSpeedPad)
             self.player_pos1 += self.movSpeedPad
 
@@ -105,7 +105,7 @@ class Pong:
             self.enemy.move_ip(0,-self.movSpeedPad)
             self.player_pos2 -= self.movSpeedPad
 
-        if keys[pygame.K_DOWN] and self.player_pos2 < 650:
+        if keys[pygame.K_DOWN] and self.player_pos2 < 635:
             self.enemy.move_ip(0,self.movSpeedPad)
             self.player_pos2 += self.movSpeedPad
 
