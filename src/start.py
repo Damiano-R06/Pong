@@ -17,6 +17,9 @@ class Start:
                 if self.startButton.collidepoint(event.pos):
                     curState = State.RUNNING
                     return curState
+                if self.helpButton.collidepoint(event.pos):
+                    curState = State.HELP
+                    return curState
 
         self.screen.fill("black")
 

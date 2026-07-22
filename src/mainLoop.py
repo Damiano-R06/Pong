@@ -5,6 +5,7 @@ from start import Start
 from states import State
 from pause import Pause
 from gameOver import GameOver
+from help import Instructions
 
 pygame.init()
 
@@ -15,6 +16,7 @@ game = Pong(screen)
 startScreen = Start(screen)
 pause = Pause(screen)
 gameOver = GameOver(screen)
+helpScreen = Instructions(screen)
 
 startedRun = False
 winner = 0
@@ -48,6 +50,9 @@ while curState != State.END:
     
     if curState == State.START:
         curState = startScreen.startUI(events)
+    
+    if curState == State.HELP:
+        curState = helpScreen.helpUI(events)
     
     if curState == State.PAUSE:
        pause.paused()

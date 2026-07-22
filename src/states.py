@@ -7,3 +7,4 @@ class State(Enum):
     P1WIN = 4
     P2WIN = 5
     END = 6
+    HELP = 7
