@@ -20,7 +20,7 @@ class Instructions:
 
         self.font.render_to(self.screen, (self.screen.get_width()//2 - 200, self.screen.get_height()//2 - 120), "Welcom to Damiano's Pong!", fgcolor=(255, 255, 255))
         self.font.render_to(self.screen, (self.screen.get_width()//2 - 350, self.screen.get_height()//2 - 80), "The first player to reach 10 points WIN!", fgcolor=(255, 255, 255))
-        self.font.render_to(self.screen, (self.screen.get_width()//2 - 350, self.screen.get_height()//2 - 40), "Use WASD for P1 and arrow keys for P2.", fgcolor=(255, 255, 255))
+        self.font.render_to(self.screen, (self.screen.get_width()//2 - 350, self.screen.get_height()//2 - 40), "Use WS for P1 and arrow keys for P2.", fgcolor=(255, 255, 255))
         self.font.render_to(self.screen, (self.screen.get_width()//2 - 350, self.screen.get_height()//2), "You can also press Q at any time to close the application.", fgcolor=(255, 255, 255))
         self.fontS.render_to(self.screen, (self.screen.get_width()//2 - 200, self.screen.get_height()//2 + 40), "Press S to return to start screen.", fgcolor=(255, 255, 255))
 
